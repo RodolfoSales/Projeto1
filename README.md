@@ -1,7 +1,7 @@
 # Data Science The Estonia Disaster Passenger List: Project Overview 
 * Handling imbalanced Datasets with Oversample techniques (SMOTE)
 * Cross-validation using StratifiedKFold
-* Optimized Logistic Regression, KNears, SVC, Decision tree, Random Forest and XGBC Regressors using GridsearchCV to reach the best model. 
+* Optimized Logistic Regression, KNears, SVC, Decision tree, Random Forest and XGBC using GridsearchCV to reach the best model. 
 
 
 ## Code and Resources Used 
@@ -15,25 +15,23 @@
 ## EDA
 I looked at the distributions of the data and the value counts for the various categorical variables. Below are a few highlights from the charts. 
 
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/salary_by_job_title.PNG "Salary by Position")
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/positions_by_state.png "Job Opportunities by State")
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/correlation_visual.png "Correlations")
+![alt text](https://github.com/RodolfoSales/Projeto1/blob/master/figures.jpeg "Figueres")
+![alt text](https://github.com/RodolfoSales/Projeto1/blob/master/sunburst.png "SunBurst")
+![alt text](https://github.com/RodolfoSales/Projeto1/blob/master/correlationmatrix.jpeg "Correlation matrix")
 
 ## Model Building 
 
-First, I transformed the categorical variables into dummy variables. I also split the data into train and tests sets with a test size of 20%.   
+First, I transformed the categorical variables using LabelEncoder in order to work with it. I also split the data into train and tests sets using Stratified K-Folds cross-validator. After I applied the SMOTE technique during cross-validation to minimize Overfitting.  
 
-I tried three different models and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret and outliers aren’t particularly bad in for this type of model.   
-
-I tried three different models:
-*	**Multiple Linear Regression** – Baseline for the model
-*	**Lasso Regression** – Because of the sparse data from the many categorical variables, I thought a normalized regression like lasso would be effective.
-*	**Random Forest** – Again, with the sparsity associated with the data, I thought that this would be a good fit. 
+I tried six different models and evaluated them using Confusion Matrix and AUC score. I chose to use Confusion Matrix to see the relationship among TP, TN, FP and FN.   
 
 ## Model performance
-The Random Forest model far outperformed the other approaches on the test and validation sets. 
-*	**Random Forest** : AUC = 11.22
-*	**Linear Regression**: AUC = 18.86
-*	**Ridge Regression**: AUC = 19.67
+The Logistic Regression model outperformed the other approaches on the test and validation sets. 
+*	**Random Forest** : AUC = 0.61
+*	**Logistic Regression**: AUC = 0.77
+*	**KNearest**: AUC = 0.61
+*	**SVC**: AUC = 0.74
+*	**Decision Tree**: AUC = 0.71
+*	**XGBC**: AUC = 0.65
 
 
